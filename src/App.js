@@ -1,23 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import MacroDisplay from "./components/MacroDisplay";
+import "./App.css";
+import enter from "../src/images/enter.svg";
+
+function useInput({ type /*...*/ }) {
+  const [value, setValue] = useState("");
+  const input = (
+    <input
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      type={type}
+    />
+  );
+  return [value, input];
+}
 
 function App() {
+  const [calories, caloriesInput] = useInput({ type: "text" });
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={enter} className="App-logo" alt="logo" />
+        <p>Please enter your caloric goal: {caloriesInput}</p>
+        <MacroDisplay calories={calories} />
       </header>
     </div>
   );
