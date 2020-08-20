@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import MacroDisplay from "./components/MacroDisplay";
 import "./App.css";
+import logo from "../src/images/track.svg";
 
 function useInput({ type /*...*/ }) {
   const [value, setValue] = useState("");

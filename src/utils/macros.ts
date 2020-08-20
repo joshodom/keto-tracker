@@ -1,3 +1,5 @@
+import Macros from "../classes/Macros";
+
 const fatCalories = 9,
   carbCalories = 4,
   proteinCalories = 4,
@@ -5,10 +7,10 @@ const fatCalories = 9,
   fatPercentage = 0.7,
   proteinPercentage = 0.25;
 
-export const generateMacros = (cals: number) => ({
+export const generateMacros = (cals: number): Macros => ({
   carbs: Math.round((carbPercentage * cals) / carbCalories),
   fats: Math.round((fatPercentage * cals) / fatCalories),
-  proteins: Math.round((proteinPercentage * cals) / proteinCalories),
+  protein: Math.round((proteinPercentage * cals) / proteinCalories),
   calories: cals,
 });
 
