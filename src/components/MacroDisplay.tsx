@@ -3,10 +3,8 @@ import generateMacros from "../utils/macros";
 import Macros from "../classes/Macros";
 
 let myMacros: Macros;
-const sendToDB = () => {
-  myMacros.calories = myMacros.calories as number;
-  console.log(myMacros);
-  console.log("calories type: " + typeof myMacros.calories);
+const sendToDB = (macros: Macros) => {
+  console.log(macros);
 };
 const MacroDisplay = (props: { calories: number }) => {
   myMacros = generateMacros(props.calories);
@@ -17,13 +15,13 @@ const MacroDisplay = (props: { calories: number }) => {
       This means your daily caloric intake{" "}
       <strong>
         <span id="makeRed">should be no higher than</span>
-      </strong>
+      </strong>{" "}
       {myMacros.calories}. <br />
       This makes your macros look like: <br />
       Carbs: {myMacros.carbs} grams <br />
       Protein: {myMacros.protein} grams <br />
       Fats: {myMacros.fats} grams <br />
-      <button type="submit" onClick={sendToDB}>
+      <button type="submit" onClick={() => sendToDB(myMacros)}>
         Submit
       </button>
     </div>
